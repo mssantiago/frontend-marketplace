@@ -1,0 +1,50 @@
+<div class="marketplace-container">
+    <!-- Carrusel de productos -->
+    <div class="product-carousel-container">
+        <div class="product-carousel">
+            <button type="button" (click)="moveCarousel(-1)"> < </button>
+            <ng-container *ngFor="let product of products | circularSlice:currentPosInCarousel:3;">
+                <img [src]="product.images | pickRandom" [alt]="product.title" height="250" />
+            </ng-container>
+            <button type="button" (click)="moveCarousel(1)"> > </button>
+        </div>
+    </div>
+    <!-- Buscador de productos -->
+    <div class="product-search-container">
+        <form class="product-form" ng-submit="searchProduct()">
+            <label for="search-product-input">Buscar productos</label>
+            <input name="searchProduct" [(ngModel)]="query" id="search-product-input" type="search" placeholder="Buscar productos" (input)="searchProduct()"  />
+        </form>
+        <div class="product-list">
+            <ng-container *ngFor="let product of filteredProducts">
+                <div class="product-item" *ngIf="productImageStatus[product.id] === 'Success'">
+                    <img [src]="product.images[0]" [alt]="product.title" height="120" />
+                    <div>
+                        <span class="title">{{ product.title | titlecase }}</span>
+                        <span class="price">{{ product.price | currency }}</span>
+                        <span class="getit"> Lo quiero! </span>
+
+                        <!-- Overflow menu -->
+                        <div class="overflow-menu">
+                            <button (click)="addToCart(product)"> Agregar al carrito! </button>
+                        </div>
+                    </div>
+                </div>
+                <div *ngIf="productImageStatus[product.id] === 'Loading'" class="image-preview"></div>
+            </ng-container>
+        </div>
+    </div>
+</div>
+
+<!-- Placeholder to initiate image loading for all products so page displacement is minimized and user experience feels good :) -->
+<ng-container *ngFor="let product of filteredProducts">
+    <img
+        class="load-image-node"
+        [src]="product.images[0]"
+        [alt]="product.title"
+        height="1"
+        width="1"
+        (load)="setImagePreviewStatus(product.id, 'Success')" 
+        (error)="setImagePreviewStatus(product.id, 'Failed')" 
+    />
+</ng-container>

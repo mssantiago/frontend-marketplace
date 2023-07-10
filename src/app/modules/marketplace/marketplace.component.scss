@@ -1,0 +1,115 @@
+.marketplace-container {
+    padding: 20px;
+    height: calc(100% - 30px);
+
+    .product-carousel-container {
+        margin-bottom: 12px;
+
+        .product-carousel {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            button {
+                height: 25px;
+                color: #92af3a;
+                font-weight: 800;
+                font-size: 16px;
+                border: none;
+                cursor: pointer;
+
+                &:hover {
+                    transform: scale(1.5);
+                }
+            }
+        }
+    }
+
+    .product-search-container {
+        height: calc(100% - 240px);
+
+        .product-form {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            width: 100%;
+    
+            input[type=search] {
+                width: 100%;
+            }
+        }
+    
+        .product-list {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            margin-top: 20px;
+            row-gap: 20px;
+            column-gap: 10px;
+            overflow-y: scroll;
+            height: calc(100% - 80px);
+    
+            .product-item {
+                display: flex;
+                align-items: center;
+                height: max-content;
+                position: relative;
+    
+                .title {
+                    font-size: 12px;
+                    font-weight: 600;
+                }
+    
+                .price,
+                .title,
+                .getit {
+                    font-size: 16px;
+                    display: block;
+                    margin-top: 8px;
+                    margin-left: 8px;
+                    width: 80px;
+                }
+                
+                .getit {
+                    padding: 2px;
+                    background-color: #92af3a;
+                    border: 1px solid #797575;
+                    &:hover {
+                        & + .overflow-menu {
+                            visibility: visible;
+                        }
+                    }
+
+                    & + .overflow-menu {
+                        visibility: hidden;
+                        position: absolute;
+                        z-index: 10;
+                        width: 80px;
+                        padding-left: 10px;
+
+                        button {
+                            cursor: pointer;
+                            padding: 10px;
+                            background-color: #5a750a;
+                            border-radius: 5px;
+                        }
+
+                        &:hover {
+                            visibility: visible;
+                        }
+                    }
+                }
+            }
+    
+            .image-preview {
+                /* This is used to improve elements on the page movement */
+                height: 120px;
+                background: transparent;
+            }
+        }
+    }
+}
+
+.load-image-node {
+    position: absolute;
+    opacity: 1;
+}

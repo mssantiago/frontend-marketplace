@@ -1,0 +1,17 @@
+<p>Pagaras {{ amount | currency }}</p>
+<form [formGroup]="paymentForm" (ngSubmit)="makePayment()">
+    <fieldset>
+        <label for="name">Nombre: </label>
+        <input id="name" type="text" formControlName="name">
+    </fieldset>
+    <fieldset>
+        <label for="name">Tarjeta: </label>
+        <input id="name" type="text" formControlName="card">
+    </fieldset>
+    <fieldset>
+        <label for="name">Fecha Vencimiento: </label>
+        <input id="name" type="date" formControlName="expDate">
+    </fieldset>
+
+    <button [disabled]="paymentForm.invalid" type="submit">Pagar!</button>
+</form>

@@ -1,0 +1,109 @@
+.nav-menu-main-container {
+    height: calc(100% - 40px);
+    padding: 20px;
+    display: flex;
+
+    .menu-logo {
+        img {
+            padding: 12px 0;
+        }
+        margin-bottom: 12px;
+        border-bottom: 1px solid #363636;
+    }
+
+    nav {
+        width: max-content;
+        height: 100%;
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
+        padding: 20px;
+        border: 1px solid #363636;
+        border-radius: 5px;
+        gap: 12px;
+        box-shadow: 7px 7px 6px -3px rgba(146,175,58,1);
+    }
+
+    .main-content {
+        width: 100%;
+        padding: 20px;
+
+        .cart-info {
+            display: flex;
+            flex-direction: row-reverse;
+
+            button {
+                background-color: #92af3a;
+                margin-left: 12px;
+                border: 1px solid #363636;
+                border-radius: 5px;
+                width: 50px;
+                cursor: pointer;
+            }
+        }
+
+        .cart-overlay {
+            position: fixed;
+            top: 0;
+            right: 320px;
+            z-index: 20;
+            width: 100%;
+            height: 100vh;
+            opacity: 0.3;
+            background-color: #ddd9d9;
+        }
+
+        .cart-details {
+            position: fixed;
+            top: 0;
+            right: 0;
+            z-index: 30;
+            width: 320px;
+            height: 100vh;
+            background-color: #ddd9d9;
+            opacity: 1;
+            padding: 10px;
+
+            .close-button {
+                cursor: pointer;
+                border: 1px solid #363636;
+                border-radius: 5px;
+            }
+
+            .cart-list {
+                list-style: none;
+                
+                li {
+                    display: flex;
+                    margin-bottom: 12px;
+
+                    img {
+                        margin-right: 10px;
+                    }
+
+                    .cart-details-ux {
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: space-between;
+
+                        span {
+                            display: block;
+                        }
+    
+                        .title {
+                            font-weight: 800;
+                        }
+    
+                        .removeit {
+                            background-color: #92af3a;
+                            border: 1px solid #363636;
+                            border-radius: 5px;
+                            width: 100%;
+                            cursor: pointer;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
